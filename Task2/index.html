@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page App (Vanilla JS)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="clickHandler.js"></script>
+    <style type="text/css">
+      TABLE {
+        border-collapse: collapse;
+        border: 2px solid black;
+      }
+      TD, TH {
+        padding: 0 20px;
+        height: 60px;
+        border: 2px solid black;
+      }
+     </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      Task 2
+    </header>
+    <hr>
+    
+    <table style="border: 1 solid black">
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Телефон</th>
+          <td id="saveButton" style="visibility: hidden;">
+            <input
+              type="button"
+              value="Сохранить"
+              onclick="clickHandler({type: 'save'})"
+            />
+          </td>
+        </tr>
+      </thead>
+      <tbody id="table"></tbody>
+      <tfoot id="input"></tfoot>
+    </table>
+  </div>
+  <script src="./validation.js"></script>
+
+  <script id="tableTemplate" type="text/template" >
+    {{#each list}}
+      <tr>
+        <td ondblclick="clickHandler({type: 'el', el: this, index: `{{@index}}`})">{{name}}</td>
+        <td ondblclick="clickHandler({type: 'el', el: this, index: `{{@index}}`})">{{phone}}</td>
+        <td>
+          <input id="delButton" type="button" value="Удалить"  onclick="clickHandler({type: 'del', index: `{{@index}}`})"/>
+        </td>
+      </tr>
+    {{/each}}    
+  </script>
+
+  <script id="inputTemplate" type="text/template">
+    <tr>
+      <form name="myForm">
+        <td>
+          <input
+            type="text"
+            id="nameInput"
+            placeholder="Имя"
+          />
+        </td>
+        <td>
+          <input
+            type="tel"
+            id="phoneInput"
+            placeholder="Телефон"
+          />
+        </td>
+        <td>
+          <input id="addButton" type="button" value="Добавить"  onclick="validateForm()"/>
+        </td>
+      </form>
+    </tr>
+  </script>
+  
+  <script src="data.js"></script>
+  <script src="view.js"></script>
+  <script src="index.js"></script>
+  <script src="getFromStorage.js"></script>
+</body>
+</html>

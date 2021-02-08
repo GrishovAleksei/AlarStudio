@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>AlarStudio demo by Grishov Alex</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    margin: 0;
+  }
+  header {
+    padding: 10px;
+    text-align: center;
+    background: #131f33;
+    color: white;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .starContainer {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .resultBlock {
+    width: 50px;
+    height: 600px;
+    border: 1px solid black;
+  }
+  #star {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Task 1</h1>
+    <p><b>Five</b> stars</p>
+  </header>
+  <div class="wrapper">
+    <div class="starContainer" id="whiteBox">
+      <svg id="star" height="90" width="90">
+        <polygon
+          points="45,0 15,90 90,30 0,30 75,90" fill="blue"
+          onclick=changeColor('blue')
+        />
+      </svg>
+      <svg id="star" height="90" width="90">
+        <polygon
+          points="45,0 15,90 90,30 0,30 75,90" fill="yellow"
+          onclick=changeColor('yellow')
+        />
+      </svg>
+      <svg id="star" height="90" width="90">
+        <polygon
+          points="45,0 15,90 90,30 0,30 75,90" fill="purple"
+          onclick=changeColor('purple')
+        />
+      </svg>
+      <svg id="star" height="90" width="90">
+        <polygon
+          points="45,0 15,90 90,30 0,30 75,90" fill="green"
+          onclick=changeColor('green')
+        />
+      </svg>
+      <svg id="star" height="90" width="90">
+        <polygon
+          points="45,0 15,90 90,30 0,30 75,90" fill="grey"
+          onclick=changeColor('grey')
+        />
+      </svg>
+    </div>
+    <div class="resultBlock" id="resultBox"></div>
+  </div>
+  <script>
+    document.getElementById("whiteBox").addEventListener("click", e => {
+      if(e.target == e.currentTarget) changeColor("white");
+    });
+    function changeColor(color) {
+      document.getElementById("resultBox").style.backgroundColor = color;
+    }
+  </script>
+</body>
+</html>
